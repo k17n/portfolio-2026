@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UXwiki — Karthik Venkataraman</title>
+  <meta name="description" content="UXwiki, a glossary of UX terms with curated reading, designed and built on Eleventy.">
+  <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/site.css?v=c26c3ef2">
+</head>
+<body data-home="../">
+  <main>
+    <div class="prose">
+      <a class="back" href="../" aria-label="Back to labs" data-fade style="--d:0"><svg viewBox="0 0 12 10" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 1.2v3.2a1.8 1.8 0 0 1-1.8 1.8H2.4M4.9 3.8 2.4 6.2l2.5 2.4"/></svg>labs</a>
+      <header class="page-head" data-fade style="--d:0.08">
+        <h1>UXwiki</h1><p class="meta">Design and development · 2020</p>
+      </header>
+      <figure data-fade style="--d:0.16" class="fig"><button type="button" class="zoom" aria-label="Enlarge image: UXwiki landing page" data-caption=""><img src="../../assets/img/uxwiki/banner.png" alt="UXwiki landing page" width="1600" height="1200" loading="lazy" decoding="async"></button></figure>
+      <p data-fade style="--d:0.24">UX keeps growing into new disciplines, and each one brings its own vocabulary. Look a term up and you get a flood of mixed search results. Jakob Nielsen has talked about <span class="lk"><a class="ext" href="https://www.nngroup.com/videos/ux-vocabulary-inflation/" target="_blank" rel="noopener noreferrer" aria-label="vocabulary inflation in UX (opens in new tab)"><span class="ext-t">vocabulary inflation in UX</span><span class="slot" aria-hidden="true"><svg data-icon="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></span> causing miscommunication.</p>
+      <p data-fade style="--d:0.32">UXwiki gives a short definition of each UX term, plus a curated list of articles for going deeper, from Nielsen Norman Group, UXmatters, UX Magazine, Smashing Magazine, UX Collective, UX Planet, and Prototypr.</p>
+      <p data-fade style="--d:0.4">I took the idea to Lakshmi Narayanan. He took on content strategy and UX writing, and I did the branding, UI and UX design, and development.</p>
+      <p data-fade style="--d:0.48">The name is UX plus wiki. The wordmark uses a curvy, heavy sans-serif to feel bold and credible, while the interface sticks to black, white, greys, and system fonts so it feels minimal and native.</p>
+      <figure data-fade style="--d:0.56" class="fig"><video src="../../assets/video/uxwiki-interaction.mp4" autoplay loop muted playsinline aria-label="Interaction in UXwiki"></video><figcaption>Interaction in UXwiki</figcaption></figure>
+      <p data-fade style="--d:0.64">We built it as a <span class="pk"><span class="term" tabindex="0" aria-label="Jamstack: A way of building sites where pages are pre-rendered into static files and served from a CDN, with JavaScript and APIs adding anything dynamic.">Jamstack</span><span class="peek" aria-hidden="true"><span class="peek-h">Jamstack</span><span class="peek-p">A way of building sites where pages are pre-rendered into static files and served from a CDN, with JavaScript and APIs adding anything dynamic.</span></span></span> site with <span class="lk"><a class="ext" href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer" aria-label="Eleventy (opens in new tab)"><span class="ext-t">Eleventy</span><span class="slot" aria-hidden="true"><svg data-icon="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></span>, starting from Max Böck’s Eleventastic starter kit, and deployed it on Netlify. It scores very well in Lighthouse.</p>
+      <figure data-fade style="--d:0.64" class="fig"><button type="button" class="zoom" aria-label="Enlarge image: Lighthouse scores for the beta" data-caption="Lighthouse scores for the beta"><img src="../../assets/img/uxwiki/lighthouse.png" alt="Lighthouse audit scores for UXwiki" width="1600" height="520" loading="lazy" decoding="async"></button><figcaption>Lighthouse scores for the beta</figcaption></figure>
+      <dl data-fade style="--d:0.64" class="facts"><dt>Team</dt><dd>Lakshmi Narayanan and me</dd><dt>My part</dt><dd>Branding, UI/UX design, development</dd><dt>Stack</dt><dd>HTML, SCSS, JS, Eleventy, npm, GitHub, Netlify</dd><dt>Design</dt><dd>Adobe XD, Illustrator</dd><dt>Started</dt><dd>Nov 2020</dd></dl>
+      <p data-fade style="--d:0.64">It’s meant to grow into a crowdsourced resource, so if you’d like to suggest terms or help out, <a class="w" href="mailto:karthik.venkataraman96@gmail.com">email me</a>.</p>
+      <section data-fade style="--d:0.64" class="sec"><h2>Try it</h2><div class="cards"><a class="card card--ext" href="https://uxwiki.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="uxwiki.netlify.app (opens in new tab)"><span class="card-body"><span class="card-k">Website · Netlify</span><span class="card-t">uxwiki.netlify.app<span class="slot" aria-hidden="true"><svg data-icon="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></span><span class="card-d">The live site.</span></span></a></div></section>
+      <nav class="pager" aria-label="More" data-fade style="--d:0.64"><a class="next" href="../know-your-vote/"><small>Next</small><span>Know Your Vote →</span></a></nav>
+    </div>
+
+    <footer data-fade style="--d:0.64">
+      <div class="clock"><span class="dot" aria-hidden="true"></span><span data-clock>--:--:-- Chennai</span></div>
+      <span><kbd>esc</kbd> to go back</span>
+    </footer>
+  </main>
+  <script src="../../assets/site.js?v=15463608"></script>
+</body>
+</html>

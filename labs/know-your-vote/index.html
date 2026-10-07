@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Know Your Vote — Karthik Venkataraman</title>
+  <meta name="description" content="Know Your Vote, an accessible election information site for Chennai built for the 2019 Indian general election.">
+  <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/site.css?v=c26c3ef2">
+</head>
+<body data-home="../">
+  <main>
+    <div class="prose">
+      <a class="back" href="../" aria-label="Back to labs" data-fade style="--d:0"><svg viewBox="0 0 12 10" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 1.2v3.2a1.8 1.8 0 0 1-1.8 1.8H2.4M4.9 3.8 2.4 6.2l2.5 2.4"/></svg>labs</a>
+      <header class="page-head" data-fade style="--d:0.08">
+        <h1>Know Your Vote</h1><p class="meta">Design and development · 2019</p>
+      </header>
+      <figure data-fade style="--d:0.16" class="fig"><button type="button" class="zoom" aria-label="Enlarge image: Know Your Vote" data-caption=""><img src="../../assets/img/know-your-vote/banner.jpg" alt="Know Your Vote" width="2400" height="1800" loading="lazy" decoding="async"></button></figure>
+      <p data-fade style="--d:0.24">Social media shapes how people vote, and much of what circulates is biased or fabricated. Big parties can afford campaigns on every channel, while small parties and independent candidates struggle to reach voters at all.</p>
+      <p data-fade style="--d:0.32">For the 2019 Indian general election, Hariprasad KC and I ran an experiment: a website with the essential facts about every candidate. With the election under two weeks away, we focused on Chennai’s three constituencies, Chennai North, Chennai Central, and Chennai South.</p>
+      <p data-fade style="--d:0.4">Scraping the web wasn’t reliable enough, and some candidates had no digital footprint at all, so we took the data from the <span class="pk"><span class="term" tabindex="0" aria-label="affidavits: Sworn statements that every election candidate in India files when contesting, declaring personal details, assets, liabilities, and criminal cases.">affidavits</span><span class="peek" aria-hidden="true"><span class="peek-h">Candidate affidavits</span><span class="peek-p">Sworn statements that every election candidate in India files when contesting, declaring personal details, assets, liabilities, and criminal cases.</span></span></span> candidates file to contest: personal, party, and financial information, and criminal records.</p>
+      <p data-fade style="--d:0.48">The flow is simple: pick your constituency, or enter your PIN code if you don’t know it, then browse the candidates and open any of them for details.</p>
+      <figure data-fade style="--d:0.56" class="fig"><button type="button" class="zoom" aria-label="Enlarge image: User flow" data-caption="User flow"><img src="../../assets/img/know-your-vote/site-user-flow.png" alt="Know Your Vote user flow" width="2164" height="1372" loading="lazy" decoding="async"></button><figcaption>User flow</figcaption></figure>
+      <p data-fade style="--d:0.64">Some voters have colour blindness or low vision, so the interface is minimal, uses Lato at a heavy weight, and sticks to high-contrast colours. Cards and tables carry the data. I designed it in Sketch and made the brand in Illustrator.</p>
+      <figure data-fade style="--d:0.64" class="fig"><button type="button" class="zoom" aria-label="Enlarge image: Style guide" data-caption="Style guide"><img src="../../assets/img/know-your-vote/style-guide.png" alt="Know Your Vote style guide" width="2880" height="1800" loading="lazy" decoding="async"></button><figcaption>Style guide</figcaption></figure>
+      <p data-fade style="--d:0.64">I built the front end with Bootstrap, SCSS, and jQuery to WCAG AA, with WAI-ARIA attributes for screen readers, and checked it with Lighthouse. Hariprasad built the Go back end, serving candidate data from JSON on Google Cloud App Engine. The core build took three days, followed by usability and cross-browser testing.</p>
+      <figure data-fade style="--d:0.64" class="fig"><button type="button" class="zoom" aria-label="Enlarge image: A candidate page" data-caption="A candidate page"><img src="../../assets/img/know-your-vote/candidate-page-screenshot.png" alt="Know Your Vote candidate page" width="2880" height="1800" loading="lazy" decoding="async"></button><figcaption>A candidate page</figcaption></figure>
+      <p data-fade style="--d:0.64">The site had more than 8,000 unique visitors during the election, and many people told us it worked as a one-stop place to learn about every candidate. They also asked for Tamil, Malayalam, and Hindi versions, articles on voter literacy, other districts and states, and an open-source codebase.</p>
+      <dl data-fade style="--d:0.64" class="facts"><dt>Team</dt><dd>Hariprasad KC and me</dd><dt>My part</dt><dd>UI/UX design, branding, front-end development</dd><dt>Stack</dt><dd>HTML, SCSS, jQuery, Bootstrap, Go, Google Cloud</dd><dt>Design</dt><dd>Sketch, Illustrator</dd><dt>When</dt><dd>7 – 16 Apr 2019</dd></dl>
+      <nav class="pager" aria-label="More" data-fade style="--d:0.64"><a class="prev" href="../uxwiki/"><small>Previous</small><span>← UXwiki</span></a></nav>
+    </div>
+
+    <footer data-fade style="--d:0.64">
+      <div class="clock"><span class="dot" aria-hidden="true"></span><span data-clock>--:--:-- Chennai</span></div>
+      <span><kbd>esc</kbd> to go back</span>
+    </footer>
+  </main>
+  <script src="../../assets/site.js?v=15463608"></script>
+</body>
+</html>

@@ -838,11 +838,11 @@ main { position: relative; }
 .sticker.was-moved .sticker-hint { opacity: 0; }
 
 @media (max-width: 820px) {
-  .sticker { --size: 88px; top: auto; right: 20px; bottom: 76px; }
+  /* Home sits top-right, beside the short heading, clear of the scene and its credit */
+  .sticker { --size: 80px; top: 18px; right: 18px; }
   .sticker, .sticker-face { border-radius: 10px; }
   .sticker-face { padding: 6px; }
   .sticker-foil { inset: 6px; border-radius: 4px; }
-  .sticker-hint { top: auto; bottom: calc(100% + 10px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -931,4 +931,76 @@ main { position: relative; }
 
 @media (prefers-reduced-motion: reduce) {
   .tool { --m: 1 !important; }
+}
+
+/* ── Time-of-day scene (home) ── */
+.scene { margin-top: auto; padding-top: 64px; }
+.scene + footer { margin-top: 0; padding-top: 18px; }
+
+.scene-art {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #080b12;
+  box-shadow: 0 0 0 1px var(--ring);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: box-shadow 0.2s ease, transform 0.35s var(--enter);
+}
+
+.scene-art canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  transition: opacity 0.22s ease;
+}
+
+.scene.is-changing canvas { opacity: 0; }
+.scene-art:hover, .scene-art:focus-visible { box-shadow: 0 0 0 1px var(--ring-h); }
+.scene-art:active { transform: scale(0.995); }
+
+.scene-hint {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 9px 4px 7px;
+  border-radius: 99px;
+  background: rgba(8, 11, 18, 0.62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  color: #f2f3f7;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0;
+  opacity: 0;
+  transform: translateY(-3px);
+  transition: opacity 0.2s ease, transform 0.3s var(--enter);
+  pointer-events: none;
+}
+
+.scene-hint svg { width: 11px; height: 11px; }
+.scene-art:hover .scene-hint, .scene-art:focus-visible .scene-hint { opacity: 1; transform: none; }
+
+.scene figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 12px;
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--faint);
+}
+
+.scene figcaption .ext { color: var(--dim); }
+
+@media (hover: none) {
+  .scene-hint { opacity: 1; transform: none; }
 }

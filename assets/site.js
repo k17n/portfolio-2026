@@ -123,12 +123,13 @@ document.querySelectorAll('[data-copy]').forEach(function (btn) {
   function set(k, v) { st.style.setProperty(k, v); }
   function apply() { set('--x', x + 'px'); set('--y', y + 'px'); }
 
-  // Keep at least half the sticker on the page
+  // Keep at least half the sticker on the page. Measured from layout (offsetLeft
+  // and offsetWidth ignore transforms), so the landing animation can't skew it.
   function clamp() {
-    var r = st.getBoundingClientRect();
-    var w = r.width, h = r.height;
-    var left = r.left - parseFloat(st.style.getPropertyValue('--x') || 0) + x;
-    var top = r.top + window.scrollY - parseFloat(st.style.getPropertyValue('--y') || 0) + y;
+    var p = st.offsetParent.getBoundingClientRect();
+    var w = st.offsetWidth, h = st.offsetHeight;
+    var left = p.left + st.offsetLeft + x;
+    var top = p.top + window.scrollY + st.offsetTop + y;
     var maxL = document.documentElement.clientWidth - w / 2;
     var maxT = document.documentElement.scrollHeight - h / 2;
     if (left < -w / 2) x += -w / 2 - left;
@@ -146,10 +147,12 @@ document.querySelectorAll('[data-copy]').forEach(function (btn) {
     if (saved && isFinite(saved.x) && isFinite(saved.y)) {
       x = saved.x; y = saved.y;
       st.classList.add('was-moved');
+      clamp();
       apply();
-      requestAnimationFrame(function () { clamp(); apply(); });
     }
   } catch (e) {}
+  // A position saved on one screen size may be off-screen on another
+  window.addEventListener('resize', function () { clamp(); apply(); });
 
   function play(cls) {
     if (still) return;

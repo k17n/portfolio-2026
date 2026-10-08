@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css?v=c26c3ef2">
+  <link rel="stylesheet" href="assets/site.css?v=c9b6a8e9">
 </head>
 <body>
   <main>
@@ -94,11 +94,23 @@
       <span class="sticker-hint" aria-hidden="true">peel &amp; drag me</span>
     </div>
 
-    <footer data-fade style="--d:.38">
+    <figure class="scene" data-scene data-fade style="--d:.38">
+      <button type="button" class="scene-art" aria-label="Show another scene">
+        <canvas></canvas>
+        <span class="scene-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg>Another</span>
+      </button>
+      <figcaption>
+        <span data-scene-when>Chennai, today</span>
+        <span><span class="lk"><a class="ext" data-scene-link href="https://ascii.rest/" target="_blank" rel="noopener noreferrer" aria-label="ascii.rest (opens in new tab)"><span class="ext-t">ascii.rest</span><span class="slot" aria-hidden="true"><svg data-icon="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></span> by <span class="lk"><a class="ext" href="https://github.com/bas3line" target="_blank" rel="noopener noreferrer" aria-label="@bas3line on GitHub (opens in new tab)"><span class="ext-t">@bas3line</span><span class="slot" aria-hidden="true"><svg data-icon="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></a></span></span>
+      </figcaption>
+    </figure>
+
+    <footer data-fade style="--d:.46">
       <div class="clock"><span class="dot" aria-hidden="true"></span><span data-clock>--:--:-- Chennai</span></div>
       <span>karthikvenkataraman.in</span>
     </footer>
   </main>
-  <script src="assets/site.js?v=15463608"></script>
+  <script type="module" src="assets/scene.js?v=09826a99"></script>
+  <script src="assets/site.js?v=f947496e"></script>
 </body>
 </html>

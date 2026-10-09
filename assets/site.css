@@ -20,8 +20,12 @@
   color-scheme: light dark;
 }
 
+/* Theme follows the system unless the settings pin it: data-theme on <html>
+   is set before first paint by a snippet in each page's <head> */
+:root[data-theme="light"] { color-scheme: light; }
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #0a0a0b;
     --name: #fafafa;
     --dim: #8e8e95;
@@ -36,6 +40,23 @@
     --peek-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.85), 0 2px 8px rgba(0, 0, 0, 0.5);
     --ok: #2fbf71;
   }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a0a0b;
+  --name: #fafafa;
+  --dim: #8e8e95;
+  --faint: #74747a;
+  --ul: rgba(255, 255, 255, 0.26);
+  --line: rgba(255, 255, 255, 0.10);
+  --surface: #1c1c1f;
+  --chip: rgba(255, 255, 255, 0.035);
+  --ring: rgba(255, 255, 255, 0.09);
+  --ring-h: rgba(255, 255, 255, 0.2);
+  --peek-ring: rgba(255, 255, 255, 0.14);
+  --peek-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.85), 0 2px 8px rgba(0, 0, 0, 0.5);
+  --ok: #2fbf71;
 }
 
 /* ── Size ──
@@ -626,8 +647,9 @@ h1 { font: inherit; color: var(--name); text-wrap: balance; }
 
 /* Logos are black single-colour marks: flip them in dark mode */
 @media (prefers-color-scheme: dark) {
-  .card-logo img { filter: invert(1); }
+  :root:not([data-theme="light"]) .card-logo img { filter: invert(1); }
 }
+:root[data-theme="dark"] .card-logo img { filter: invert(1); }
 
 .bento .card:has(.card-img, .card-logo) { align-content: start; }
 
@@ -854,7 +876,7 @@ main { position: relative; }
 
 @media (max-width: 820px) {
   /* Home sits top-right, beside the short heading, clear of the scene and its credit */
-  .sticker { --size: calc(80px * var(--s)); top: calc(18px * var(--s)); right: calc(18px * var(--s)); }
+  .sticker { --size: calc(80px * var(--s)); top: calc(18px * var(--s)); right: calc(66px * var(--s)); }
   .sticker, .sticker-face { border-radius: calc(10px * var(--s)); }
   .sticker-face { padding: calc(6px * var(--s)); }
   .sticker-foil { inset: 6px; border-radius: calc(4px * var(--s)); }
@@ -921,12 +943,17 @@ main { position: relative; }
 /* Single-colour dark marks flip in dark mode */
 @media (prefers-color-scheme: dark) {
   /* Deep brand colours (Mendeley, Jira) go muddy as grey on dark tiles, so lift them */
-  .tool img { filter: grayscale(1) brightness(1.8); }
-  .tool--deep img { filter: grayscale(1) brightness(3.2); }
-  .tool-grid:hover .tool--deep img, .tool-grid:focus-within .tool--deep img { filter: brightness(1.7); }
-  .tool--mono img { filter: grayscale(1) invert(1); }
-  .tool-grid:hover .tool--mono img, .tool-grid:focus-within .tool--mono img { filter: invert(1); }
+  :root:not([data-theme="light"]) .tool img { filter: grayscale(1) brightness(1.8); }
+  :root:not([data-theme="light"]) .tool--deep img { filter: grayscale(1) brightness(3.2); }
+  :root:not([data-theme="light"]) .tool-grid:hover .tool--deep img, :root:not([data-theme="light"]) .tool-grid:focus-within .tool--deep img { filter: brightness(1.7); }
+  :root:not([data-theme="light"]) .tool--mono img { filter: grayscale(1) invert(1); }
+  :root:not([data-theme="light"]) .tool-grid:hover .tool--mono img, :root:not([data-theme="light"]) .tool-grid:focus-within .tool--mono img { filter: invert(1); }
 }
+:root[data-theme="dark"] .tool img { filter: grayscale(1) brightness(1.8); }
+:root[data-theme="dark"] .tool--deep img { filter: grayscale(1) brightness(3.2); }
+:root[data-theme="dark"] .tool-grid:hover .tool--deep img, :root[data-theme="dark"] .tool-grid:focus-within .tool--deep img { filter: brightness(1.7); }
+:root[data-theme="dark"] .tool--mono img { filter: grayscale(1) invert(1); }
+:root[data-theme="dark"] .tool-grid:hover .tool--mono img, :root[data-theme="dark"] .tool-grid:focus-within .tool--mono img { filter: invert(1); }
 
 /* Touch: full colour, names visible, no dock. Tiles stay square, so long names
    truncate (the full name is in each tile's aria-label). */
@@ -945,8 +972,14 @@ main { position: relative; }
   }
 }
 
+/* Touch keeps full colour in dark mode too; only the mono marks flip */
 @media (hover: none) and (prefers-color-scheme: dark) {
-  .tool--mono img { filter: invert(1); }
+  :root:not([data-theme="light"]) .tool img { filter: none; }
+  :root:not([data-theme="light"]) .tool--mono img { filter: invert(1); }
+}
+@media (hover: none) {
+  :root[data-theme="dark"] .tool img { filter: none; }
+  :root[data-theme="dark"] .tool--mono img { filter: invert(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1025,7 +1058,7 @@ main { position: relative; }
   .scene-hint { opacity: 1; transform: none; }
 }
 
-/* ── Text size setting (desktop) ── */
+/* ── Settings: theme everywhere, text size on desktop ── */
 .a11y-btn {
   position: fixed;
   z-index: 50;
@@ -1110,13 +1143,21 @@ main { position: relative; }
 .a11y-opt:has(:focus-visible) { outline: 1.5px solid var(--name); outline-offset: 2px; }
 .a11y-opt input { position: absolute; opacity: 0; pointer-events: none; }
 
+.a11y-opts--theme { grid-template-columns: repeat(3, 1fr); }
+.a11y-opts--theme .a11y-opt { height: 58px; justify-content: center; gap: 6px; }
+.a11y-opts--theme svg { width: 16px; height: 16px; color: var(--name); }
+
+.a11y fieldset:has(+ .a11y-size) { padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.a11y .a11y-size { margin-top: 12px; }
+
 .a11y-aa { color: var(--name); font-weight: 500; letter-spacing: -0.02em; line-height: 1; }
 .a11y-opt:first-child .a11y-aa { font-size: 18px; }
 .a11y-opt:last-child .a11y-aa { font-size: 26px; }
 
 .a11y-note { margin-top: 10px; padding: 0 2px; color: var(--faint); text-wrap: pretty; }
 
-/* Phones and small windows don't get the setting */
+/* Phones and small windows get the theme but not the text size */
 @media (max-width: 820px) {
-  .a11y-btn, .a11y { display: none; }
+  .a11y-size, .a11y-note { display: none; }
+  .a11y fieldset:has(+ .a11y-size) { padding-bottom: 0; border-bottom: 0; }
 }

@@ -33,10 +33,26 @@ document.querySelectorAll('[data-copy]').forEach(function (btn) {
   });
 });
 
-// Text size: default, or a larger, wider reading mode. The saved choice is applied
-// by a snippet in each page's <head> before first paint; this builds the control.
+// Settings: theme (system, light or dark) everywhere, and on desktop a text size,
+// default or a larger, wider reading mode. Saved choices are applied by a snippet
+// in each page's <head> before first paint; this builds the control.
 (function () {
   var root = document.documentElement;
+  var THEME = 'karthik-theme';
+
+  // <picture> sources pick a logo by prefers-color-scheme, which a pinned theme
+  // can't change, so point their media at the pinned theme instead.
+  var sources = document.querySelectorAll('source[media*="prefers-color-scheme"]');
+  function syncPictures() {
+    var pinned = root.getAttribute('data-theme');
+    sources.forEach(function (src) {
+      var media = src.dataset.media || (src.dataset.media = src.media);
+      var scheme = /dark/.test(media) ? 'dark' : 'light';
+      src.media = !pinned ? media : pinned === scheme ? 'all' : 'not all';
+    });
+  }
+  if (root.hasAttribute('data-theme')) syncPictures();
+
   if (!HTMLElement.prototype.hasOwnProperty('popover')) return;
   var KEY = 'karthik-text';
   var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -46,7 +62,7 @@ document.querySelectorAll('[data-copy]').forEach(function (btn) {
   btn.type = 'button';
   btn.className = 'a11y-btn';
   btn.setAttribute('popovertarget', 'a11y');
-  btn.setAttribute('aria-label', 'Text size');
+  btn.setAttribute('aria-label', 'Settings');
   btn.setAttribute('aria-expanded', 'false');
   btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>';
 
@@ -55,7 +71,12 @@ document.querySelectorAll('[data-copy]').forEach(function (btn) {
   panel.className = 'a11y';
   panel.setAttribute('popover', '');
   panel.innerHTML =
-    '<fieldset><legend>Text size</legend><div class="a11y-opts">' +
+    '<fieldset><legend>Theme</legend><div class="a11y-opts a11y-opts--theme">' +
+    '<label class="a11y-opt"><input type="radio" name="a11y-theme" value="system"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>System</label>' +
+    '<label class="a11y-opt"><input type="radio" name="a11y-theme" value="light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>Light</label>' +
+    '<label class="a11y-opt"><input type="radio" name="a11y-theme" value="dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>Dark</label>' +
+    '</div></fieldset>' +
+    '<fieldset class="a11y-size"><legend>Text size</legend><div class="a11y-opts">' +
     '<label class="a11y-opt"><input type="radio" name="a11y-size" value="default"><span class="a11y-aa" aria-hidden="true">Aa</span>Default</label>' +
     '<label class="a11y-opt"><input type="radio" name="a11y-size" value="large"><span class="a11y-aa" aria-hidden="true">Aa</span>Large</label>' +
     '</div></fieldset><p class="a11y-note">Larger type and spacing in a wider column.</p>';
@@ -63,7 +84,8 @@ document.querySelectorAll('[data-copy]').forEach(function (btn) {
   document.body.prepend(panel);
   document.body.prepend(btn);
 
-  var radios = panel.querySelectorAll('input');
+  panel.querySelector('[name="a11y-theme"][value="' + (root.getAttribute('data-theme') || 'system') + '"]').checked = true;
+  var radios = panel.querySelectorAll('[name="a11y-size"]');
   radios[root.classList.contains('text-lg') ? 1 : 0].checked = true;
 
   panel.addEventListener('toggle', function (e) {
@@ -74,6 +96,7 @@ document.querySelectorAll('[data-copy]').forEach(function (btn) {
   // new size. Animated here rather than with a CSS transition so a saved
   // choice applies instantly on page load.
   panel.addEventListener('change', function (e) {
+    if (e.target.name === 'a11y-theme') return setTheme(e.target.value);
     var large = e.target.value === 'large';
     var cs = getComputedStyle(root);
     var from = { '--s': cs.getPropertyValue('--s'), '--w': cs.getPropertyValue('--w') };
@@ -89,6 +112,21 @@ document.querySelectorAll('[data-copy]').forEach(function (btn) {
       else localStorage.removeItem(KEY);
     } catch (err) {}
   });
+
+  // System clears the pin, so the page follows the OS again, live
+  function setTheme(value) {
+    var apply = function () {
+      if (value === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', value);
+      syncPictures();
+    };
+    if (!still && document.startViewTransition) document.startViewTransition(apply);
+    else apply();
+    try {
+      if (value === 'system') localStorage.removeItem(THEME);
+      else localStorage.setItem(THEME, value);
+    } catch (err) {}
+  }
 })();
 
 // Esc goes up one level from inner pages

@@ -5,17 +5,17 @@
 import { mount } from './vendor/ascii-rest/mount.js';
 
 const QUARTERS = [
-  { label: 'Night', scenes: ['night-coast', 'desert-night', 'aurora-fjord'] },               // 00–06
-  { label: 'Morning', scenes: ['alpine-dawn', 'taj-dawn', 'misty-forest'] },                 // 06–12
-  { label: 'Afternoon', scenes: ['deep-reef', 'earthrise', 'ocean-sunset', 'storm-plains'] }, // 12–18
-  { label: 'Evening', scenes: ['kyoto-dusk', 'varanasi-ghats', 'marine-drive'] },            // 18–24
+  { label: 'Night', scenes: ['night-coast', 'desert-night', 'aurora-fjord', 'tokyo-rain'] },       // 00–06
+  { label: 'Morning', scenes: ['alpine-dawn', 'taj-dawn', 'misty-forest'] },                       // 06–12
+  { label: 'Afternoon', scenes: ['deep-reef', 'earthrise', 'ocean-sunset', 'storm-plains'] },       // 12–18
+  { label: 'Evening', scenes: ['kyoto-dusk', 'varanasi-ghats', 'marine-drive', 'lantern-lake'] },  // 18–24
 ];
 
 const TITLES = {
-  'night-coast': 'Night Coast', 'desert-night': 'Desert Night', 'aurora-fjord': 'Aurora Fjord',
+  'night-coast': 'Night Coast', 'desert-night': 'Desert Night', 'aurora-fjord': 'Aurora Fjord', 'tokyo-rain': 'Tokyo Rain',
   'alpine-dawn': 'Alpine Dawn', 'taj-dawn': 'Taj Dawn', 'misty-forest': 'Misty Forest',
   'deep-reef': 'Deep Reef', 'earthrise': 'Earthrise', 'ocean-sunset': 'Ocean Sunset', 'storm-plains': 'Storm Plains',
-  'kyoto-dusk': 'Kyoto Dusk', 'varanasi-ghats': 'Varanasi Ghats', 'marine-drive': 'Marine Drive',
+  'kyoto-dusk': 'Kyoto Dusk', 'varanasi-ghats': 'Varanasi Ghats', 'marine-drive': 'Marine Drive', 'lantern-lake': 'Lantern Lake',
 };
 
 const KEY = 'karthik-scene';

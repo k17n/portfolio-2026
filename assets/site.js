@@ -33,6 +33,64 @@ document.querySelectorAll('[data-copy]').forEach(function (btn) {
   });
 });
 
+// Text size: default, or a larger, wider reading mode. The saved choice is applied
+// by a snippet in each page's <head> before first paint; this builds the control.
+(function () {
+  var root = document.documentElement;
+  if (!HTMLElement.prototype.hasOwnProperty('popover')) return;
+  var KEY = 'karthik-text';
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var anim;
+
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'a11y-btn';
+  btn.setAttribute('popovertarget', 'a11y');
+  btn.setAttribute('aria-label', 'Text size');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>';
+
+  var panel = document.createElement('div');
+  panel.id = 'a11y';
+  panel.className = 'a11y';
+  panel.setAttribute('popover', '');
+  panel.innerHTML =
+    '<fieldset><legend>Text size</legend><div class="a11y-opts">' +
+    '<label class="a11y-opt"><input type="radio" name="a11y-size" value="default"><span class="a11y-aa" aria-hidden="true">Aa</span>Default</label>' +
+    '<label class="a11y-opt"><input type="radio" name="a11y-size" value="large"><span class="a11y-aa" aria-hidden="true">Aa</span>Large</label>' +
+    '</div></fieldset><p class="a11y-note">Larger type and spacing in a wider column.</p>';
+
+  document.body.prepend(panel);
+  document.body.prepend(btn);
+
+  var radios = panel.querySelectorAll('input');
+  radios[root.classList.contains('text-lg') ? 1 : 0].checked = true;
+
+  panel.addEventListener('toggle', function (e) {
+    btn.setAttribute('aria-expanded', e.newState === 'open' ? 'true' : 'false');
+  });
+
+  // Animate --s and --w from wherever they are now (even mid-switch) to the
+  // new size. Animated here rather than with a CSS transition so a saved
+  // choice applies instantly on page load.
+  panel.addEventListener('change', function (e) {
+    var large = e.target.value === 'large';
+    var cs = getComputedStyle(root);
+    var from = { '--s': cs.getPropertyValue('--s'), '--w': cs.getPropertyValue('--w') };
+    if (anim) anim.cancel();
+    root.classList.toggle('text-lg', large);
+    cs = getComputedStyle(root);
+    var to = { '--s': cs.getPropertyValue('--s'), '--w': cs.getPropertyValue('--w') };
+    if (!still && root.animate) {
+      anim = root.animate([from, to], { duration: 550, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
+    }
+    try {
+      if (large) localStorage.setItem(KEY, 'large');
+      else localStorage.removeItem(KEY);
+    } catch (err) {}
+  });
+})();
+
 // Esc goes up one level from inner pages
 (function () {
   var home = document.body.getAttribute('data-home');
@@ -40,6 +98,7 @@ document.querySelectorAll('[data-copy]').forEach(function (btn) {
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape' || e.metaKey || e.ctrlKey || e.altKey) return;
     if (document.querySelector('dialog[open]')) return;
+    try { if (document.querySelector(':popover-open')) return; } catch (err) {}
     location.href = home;
   });
 })();
@@ -264,7 +323,7 @@ document.querySelectorAll('[data-copy]').forEach(function (btn) {
     grid.addEventListener('pointermove', function (e) {
       grid.classList.add('is-docking');
       var cs = getComputedStyle(grid);
-      var size = parseFloat(cs.getPropertyValue('--t')) || 48;
+      var size = 48 * (parseFloat(cs.getPropertyValue('--s')) || 1);
       var gap = parseFloat(cs.columnGap) || 8;
       var x = e.clientX - grid.getBoundingClientRect().left;
       tools.forEach(function (t, i) {

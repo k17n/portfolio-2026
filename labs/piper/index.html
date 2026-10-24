@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>P.I.P.E.R. — Karthik Venkataraman</title>
+  <meta name="description" content="P.I.P.E.R., an open-source, local-first AI co-pilot for the job search. It reads your inbox, tracks every application, and never acts without you.">
+  <link rel="icon" href="../../assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/site.css?v=fd25123b">
+  <script>try{var d=document.documentElement,t=localStorage.getItem('karthik-theme');if(localStorage.getItem('karthik-text')==='large')d.classList.add('text-lg');if(t==='light'||t==='dark')d.setAttribute('data-theme',t)}catch(e){}</script>
+</head>
+<body data-home="../">
+  <main>
+    <div class="prose">
+      <a class="back" href="../" aria-label="Back to labs" data-fade style="--d:0"><svg viewBox="0 0 12 10" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 1.2v3.2a1.8 1.8 0 0 1-1.8 1.8H2.4M4.9 3.8 2.4 6.2l2.5 2.4"/></svg>labs</a>
+      <header class="page-head" data-fade style="--d:0.08">
+        <h1>P.I.P.E.R.</h1><p class="meta">Open source · work in progress</p>
+      </header>
+      <figure data-fade style="--d:0.16" class="fig"><button type="button" class="zoom" aria-label="Enlarge image: The P.I.P.E.R. dashboard" data-caption="The pipeline: every application as one path from source to outcome (sample data)"><img src="../../assets/img/piper/dashboard.png" alt="The P.I.P.E.R. dashboard, showing every application as one path from where it came from to where it ended up" width="3200" height="1800" loading="lazy" decoding="async"></button><figcaption>The pipeline: every application as one path from source to outcome (sample data)</figcaption></figure>
+      <p data-fade style="--d:0.24">P.I.P.E.R. is a private co-pilot for the job search. It reads your inbox, tracks every application, and is designed to draft your outreach and prepare your applications, but never to send or submit anything on its own.</p>
+      <p data-fade style="--d:0.32">A job search is five jobs at once: knowing where you stand, writing to people, telling your story, preparing for conversations, and applying. Each lives in a different tool, or in your head. The idea is one assistant that carries the same context across all of them.</p>
+      <p data-fade style="--d:0.4">The first module is built and I use it daily. The rest are designed or planned, and I’m being careful to say which is which.</p>
+      <dl data-fade style="--d:0.48" class="facts"><dt>Pipeline</dt><dd>Reads your Gmail and tracks every application. Built, in daily use.</dd><dt>Writing</dt><dd>Cover letters and messages, with every claim traced to its source. Fully specified.</dd><dt>Résumés</dt><dd>A tailored version per role. Planned.</dd><dt>Interviews</dt><dd>Likely questions and your best-matching stories. Planned.</dd><dt>Applying</dt><dd>Prepares an application for you to review and send. Planned.</dd></dl>
+      <p data-fade style="--d:0.56">It runs entirely on your own machine. The model is local, the data is in a local database, and the only outside service it talks to is Gmail, read-only. When the model isn’t sure about an email, it asks you instead of guessing.</p>
+      <dl data-fade style="--d:0.64" class="facts"><dt>Role</dt><dd>Product designer and engineer, solo, end to end</dd><dt>Constraints</dt><dd>Fully local, one consumer graphics card, read-only access to a personal inbox</dd><dt>Stack</dt><dd>Python, FastAPI, SQLite, React, TypeScript, Tailwind, ECharts, Ollama (local LLM), Gmail API</dd><dt>Status</dt><dd>Inbox pipeline built and in use; open source on GitHub</dd></dl>
+      <section data-fade style="--d:0.64" class="sec"><h2>Read more</h2><div class="cards"><a class="card" href="../../cases/piper/" aria-label="Case study"><span class="card-body"><span class="card-k">Case study</span><span class="card-t">Designing an AI co-pilot for the job search<span class="slot" aria-hidden="true"><svg data-icon="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></span><span class="card-d">How much should a co-pilot do, and how does it earn the right to do more? The decisions behind it.</span></span></a><a class="card card--ext" href="https://github.com/k17n/piper" target="_blank" rel="noopener noreferrer" aria-label="Source on GitHub (opens in new tab)"><span class="card-body"><span class="card-k">Code · GitHub</span><span class="card-t">k17n/piper<span class="slot" aria-hidden="true"><svg data-icon="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></span><span class="card-d">The source, and how to run it.</span></span></a><a class="card card--ext" href="https://github.com/k17n/piper/tree/main/docs" target="_blank" rel="noopener noreferrer" aria-label="Docs folder on GitHub (opens in new tab)"><span class="card-body"><span class="card-k">Specs · GitHub</span><span class="card-t">Docs<span class="slot" aria-hidden="true"><svg data-icon="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span></span><span class="card-d">The product PRD and the Writing Studio spec.</span></span></a></div></section>
+    </div>
+
+    <footer data-fade style="--d:0.64">
+      <div class="clock"><span class="dot" aria-hidden="true"></span><span data-clock>--:--:-- Chennai</span></div>
+      <span><kbd>esc</kbd> to go back</span>
+    </footer>
+  </main>
+  <script src="../../assets/site.js?v=e20c2b2a"></script>
+</body>
+</html>

@@ -511,6 +511,27 @@ h1 { font: inherit; color: var(--name); text-wrap: balance; }
 .facts dt { color: var(--faint); }
 .facts dd { color: var(--dim); text-wrap: pretty; }
 
+/* Long-form case studies: sub-heads and lists inside prose */
+.prose h2 {
+  font: inherit;
+  color: var(--faint);
+  margin-top: calc(48px * var(--s));
+}
+
+.prose h2 + p { margin-top: calc(8px * var(--s)); }
+.prose strong { color: var(--name); font-weight: 600; }
+
+.prose ul {
+  margin-top: calc(24px * var(--s));
+  padding-left: 1.15em;
+  display: grid;
+  gap: calc(10px * var(--s));
+}
+
+.prose li { text-wrap: pretty; }
+.prose li::marker { color: var(--faint); }
+.fig--narrow { max-width: calc(280px * var(--s)); }
+
 /* Sections of cards */
 .sec { margin-top: calc(40px * var(--s)); }
 .sec h2 { font: inherit; color: var(--faint); margin-bottom: calc(10px * var(--s)); }

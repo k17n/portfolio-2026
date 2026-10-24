@@ -16,6 +16,7 @@ Then open http://localhost:5173.
 
 - `index.html` — home
 - `work/`, `research/`, `labs/` — sections, each with a page per case study
+- `cases/` — long-form case studies, unlisted for now (`noindex`, no index page) and linked only from `labs/`
 - `advisory/`, `skills/` — single pages
 - `assets/site.css`, `assets/site.js` — all styles and behaviour
 - `assets/img/`, `assets/docs/`, `assets/video/` — media and project reports

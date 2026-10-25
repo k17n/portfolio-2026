@@ -1,0 +1,80 @@
+{
+  "linkedin": "https://www.linkedin.com/in/k17n/details/recommendations/",
+  "peers": [
+    {
+      "id": "karthik-raghavendran",
+      "name": "Karthik Raghavendran",
+      "initials": "KR",
+      "title": "Founder and CEO",
+      "at": "Neurostellar",
+      "roles": [
+        "neurostellar"
+      ],
+      "relationship": "Managed me directly",
+      "url": "https://www.linkedin.com/in/karthik-neurostellar/",
+      "quote": [
+        "If you’re considering Karthik for any role, take the shot. You won’t regret it.",
+        "As a CEO, I’ve always looked for people who combine a sharp intellect with a good heart. That combination is rare, and he has both. He’s ambitious, passionate, a strong operator, and genuinely empathetic.",
+        "He played a key role in building our design foundation and instilled a culture of design thinking across the Product team. He grasps what’s needed quickly and gets it done.",
+        "He’s also one of those rare people who fits wherever he’s needed. His real strength is how deeply and broadly he goes to understand a problem, and then how he brings the team together to execute on it. His enthusiasm and energy are infectious, and people genuinely want to work alongside him.",
+        "I’d happily recommend Karthik to any organisation. Wherever he goes, he’ll be a huge asset."
+      ],
+      "highlight": "His real strength is how deeply and broadly he goes to understand a problem, and then how he brings the team together to execute on it.",
+      "photo": "karthik-raghavendran.jpg"
+    },
+    {
+      "id": "lakshmi-narayan-jayapal",
+      "name": "Lakshmi Narayan Jayapal",
+      "initials": "LJ",
+      "title": "Machine Learning Engineer",
+      "at": "Zoho",
+      "roles": [
+        "zoho"
+      ],
+      "relationship": "Senior to me at Zoho, not my manager",
+      "url": "https://www.linkedin.com/in/lakshmi-narayan-jayapal/",
+      "quote": [
+        "I had the chance to work with Karthik for close to 4 years at Zoho. Apart from his proficiency in building wireframes and high-fidelity UIs, he was constantly involved in improving UX, design standards, and accessibility across the entire product. Most notably, he was the first designer for the StatusIQ product, where he collaborated with product managers and developers to shape the initial launch. Not just another designer, he embodies design thinking."
+      ],
+      "highlight": "Most notably, he was the first designer for the StatusIQ product, where he collaborated with product managers and developers to shape the initial launch.",
+      "photo": "lakshmi-narayan-jayapal.jpg"
+    },
+    {
+      "id": "hariprasad-kc",
+      "name": "Hariprasad K C",
+      "initials": "HK",
+      "title": "Senior Software Developer",
+      "at": "Spendflo",
+      "roles": [
+        "zoho"
+      ],
+      "relationship": "Same product, different team at Zoho",
+      "url": "https://www.linkedin.com/in/hariprasadkc/",
+      "quote": [
+        "I’ve had the pleasure of collaborating with Karthik for several projects and ventures since I’ve known him. I can say without doubt that he’s one of the most practical designers I’ve worked with. He has the instinct for stripping away complexities and forging simple yet effective interactions.",
+        "Beyond his skill set, the deep respect he has for the craft and for the users that actually interact with his designs certainly multiplies his impact.",
+        "He’s generous with feedback and an absolute joy to work with."
+      ],
+      "highlight": "He has the instinct for stripping away complexities and forging simple yet effective interactions.",
+      "photo": "hariprasad-kc.jpg"
+    },
+    {
+      "id": "murugappan-vr",
+      "name": "Murugappan VR",
+      "initials": "MV",
+      "title": "Fullstack Developer",
+      "at": "Zoho",
+      "roles": [
+        "zoho"
+      ],
+      "relationship": "Same product, different team at Zoho",
+      "url": "https://www.linkedin.com/in/murugappan-vr-3511b8113/",
+      "quote": [
+        "We worked together during the initial years of our career. Karthik was always our go-to guy when it came to design, UI, and UX. His dedication to always achieving perfection in design and adapting to the latest design standards is truly admirable. Funny, quirky, and always open to exploring new things is what sets him apart from the lot.",
+        "I would recommend Karthik to anyone who wants a passionate designer with quality design skills, a plethora of ideas, and slapstick humor."
+      ],
+      "highlight": "Karthik was always our go-to guy when it came to design, UI, and UX.",
+      "photo": "murugappan-vr.jpg"
+    }
+  ]
+}

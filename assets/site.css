@@ -596,6 +596,104 @@ h1 { font: inherit; color: var(--name); text-wrap: balance; }
   text-wrap: pretty;
 }
 
+/* Peer recommendations: cards built from assets/peers.json by assets/peers.js */
+.card--peer { align-items: start; scroll-margin-top: calc(24px * var(--s)); }
+.card--peer:target { background: var(--chip); box-shadow: inset 0 0 0 1px var(--ring-h); }
+.card-cover { position: absolute; inset: 0; z-index: 1; border-radius: inherit; cursor: pointer; }
+.card-cover:focus-visible { outline-offset: 2px; border-radius: calc(12px * var(--s)); }
+.peer-name {
+  position: relative;
+  z-index: 2;
+  text-decoration: underline 1px transparent;
+  text-underline-offset: calc(3px * var(--s));
+  transition: text-decoration-color 0.18s ease;
+}
+.peer-name:hover, .peer-name:focus-visible { text-decoration-color: var(--ul); }
+.card--peer:hover .card-t { text-decoration-color: transparent; }
+.card--peer:hover .slot > svg[data-icon="arrow"] { opacity: 0.5; transform: none; }
+.peer-name:hover .slot > svg[data-icon="arrow"], .peer-name:focus-visible .slot > svg[data-icon="arrow"] { opacity: 1; transform: translate(1.5px, -1.5px); }
+.card--peer .card-d > span { display: block; }
+.card--peer .card-d > span + span { margin-top: calc(8px * var(--s)); }
+.card-rel { margin-top: calc(8px * var(--s)); margin-bottom: 0; }
+
+.avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: calc(40px * var(--s));
+  height: calc(40px * var(--s));
+  border-radius: 50%;
+  overflow: hidden;
+  font-size: calc(12px * var(--s));
+  font-weight: 550;
+  letter-spacing: 0.02em;
+  color: var(--dim);
+  background: var(--chip);
+  box-shadow: inset 0 0 0 1px var(--ring-h);
+}
+
+.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* The best line, on the marquee card */
+.card-d--hl { color: var(--name); }
+
+.marquee-box { display: grid; gap: calc(10px * var(--s)); }
+
+.marquee {
+  overflow: hidden;
+  margin-inline: calc(-16px * var(--s));
+  padding-inline: calc(16px * var(--s));
+  cursor: grab;
+  touch-action: pan-y;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.marquee.is-dragging { cursor: grabbing; user-select: none; -webkit-user-select: none; }
+.marquee.is-dragging .card { pointer-events: none; }
+
+.marquee-track {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+  will-change: transform;
+}
+
+.marquee .card { flex: none; width: calc(300px * var(--s)); margin-right: calc(8px * var(--s)); align-content: start; -webkit-user-drag: none; }
+.marquee .card-d { -webkit-user-select: none; user-select: none; }
+/* Equal cards: the relationship line sits at the bottom whatever the quote length */
+.marquee .card--peer { align-items: stretch; align-content: stretch; }
+.marquee .card-rel { margin-top: auto; padding-top: calc(8px * var(--s)); }
+.marquee .avatar { align-self: start; }
+
+.marquee-ctl { display: flex; justify-content: flex-end; gap: calc(6px * var(--s)); }
+
+.marquee-btn {
+  display: grid;
+  place-items: center;
+  width: calc(30px * var(--s));
+  height: calc(30px * var(--s));
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--faint);
+  box-shadow: inset 0 0 0 1px var(--ring);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.18s ease, background-color 0.2s ease, box-shadow 0.2s ease, transform 0.35s var(--enter);
+}
+
+.marquee-btn svg { width: calc(12px * var(--s)); height: calc(12px * var(--s)); }
+.marquee-btn:hover, .marquee-btn:focus-visible { color: var(--name); background: var(--chip); box-shadow: inset 0 0 0 1px var(--ring-h); }
+.marquee-btn:active { transform: scale(0.94); }
+
+/* Reduced motion: a plain row you scroll or step through */
+.marquee--static { overflow-x: auto; scroll-snap-type: x proximity; cursor: auto; scrollbar-width: none; }
+.marquee--static::-webkit-scrollbar { display: none; }
+.marquee--static .card { scroll-snap-align: start; }
+
 .card-img {
   width: calc(64px * var(--s));
   height: calc(64px * var(--s));

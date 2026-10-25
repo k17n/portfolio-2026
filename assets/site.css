@@ -635,7 +635,19 @@ h1 { font: inherit; color: var(--name); text-wrap: balance; }
 .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
 /* The best line, on the marquee card */
-.card-d--hl { color: var(--name); }
+.card-d--hl {
+  margin-top: calc(10px * var(--s));
+  font-size: calc(15px * var(--s));
+  line-height: 1.45;
+  letter-spacing: -0.012em;
+  color: var(--name);
+  text-wrap: pretty;
+}
+
+/* Quote first in the eye, then who said it, then the context */
+.marquee .card-t { font-size: calc(13px * var(--s)); }
+.marquee .peer-name { color: var(--dim); }
+.marquee .peer-name:hover, .marquee .peer-name:focus-visible { color: var(--name); }
 
 .marquee-box { display: grid; gap: calc(10px * var(--s)); }
 
@@ -660,7 +672,7 @@ h1 { font: inherit; color: var(--name); text-wrap: balance; }
   will-change: transform;
 }
 
-.marquee .card { flex: none; width: calc(300px * var(--s)); margin-right: calc(8px * var(--s)); align-content: start; -webkit-user-drag: none; }
+.marquee .card { flex: none; width: calc(320px * var(--s)); margin-right: calc(8px * var(--s)); align-content: start; -webkit-user-drag: none; }
 .marquee .card-d { -webkit-user-select: none; user-select: none; }
 /* Equal cards: the relationship line sits at the bottom whatever the quote length */
 .marquee .card--peer { align-items: stretch; align-content: stretch; }

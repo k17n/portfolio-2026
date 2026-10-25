@@ -1,4 +1,18 @@
 /*! ascii.rest by @bas3line (https://github.com/bas3line/ascii), MIT License: see LICENSE in this folder */
+const isPiece = (v) => !!v && typeof v === "object" && !!v.meta && typeof v.meta === "object" && typeof v.default === "function";
+/**
+ * The piece in a module a page imported, as <ascii-art src> imports one: its default export when that is a piece, as a
+ * kit file's `export default sea()` is, or else the module itself when it exports meta and a default function, as the
+ * library's pieces do. Throws, saying so, for a module with neither.
+ */
+export function pieceIn(mod, from) {
+    const given = mod?.default;
+    if (isPiece(given))
+        return given;
+    if (isPiece(mod))
+        return mod;
+    throw new Error(`ascii.rest: ${from} has no piece: export one as its default, export default sea(), or export meta and a default function`);
+}
 export function mount(el, piece, options = {}) {
     const make = typeof piece === "function" ? piece : piece.default;
     const meta = typeof piece === "function" ? {} : piece.meta;
@@ -14,7 +28,10 @@ export function mount(el, piece, options = {}) {
         return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2] < 128;
     };
     const env = () => ({ paper: canvas && ground ? !dark(ground) : dark(getComputedStyle(el).color), color });
-    let t = 0;
+    // Held still for reduced motion, it shows the moment the piece names for that: every letter of a typed banner.
+    // matchMedia is checked for: a still piece needs nothing else of a browser's, and may be drawn where there is none.
+    const reduced = !motion && typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let t = reduced ? (meta.still ?? 0) : 0;
     let draw = () => {
         el.textContent = frame(t, env());
     };

@@ -327,7 +327,7 @@ export default function kyotoDusk() {
         }
     }
     // the reflection source: the far side before the tree covers it
-    const RR = R.slice(), RG = G.slice(), RB = B.slice(), RM = mat.slice();
+    const RR = R.slice(), RG = G.slice(), RB = B.slice();
     // --- the stone lantern ----------------------------------------------------
     const lantern = (dx, y) => {
         const ax = Math.abs(dx);

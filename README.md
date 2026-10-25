@@ -27,5 +27,10 @@ Then open http://localhost:5173.
 - The time-of-day scenes on the home page are from [ascii.rest](https://ascii.rest)
   by Shubham ([@bas3line](https://github.com/bas3line)), used under the MIT License.
   See `assets/vendor/ascii-rest/`.
+- The Marina lighthouse rain scene in `assets/scenes/` is this site's own, drawn
+  the same way as the ascii.rest scenes. `auto-rain.js` there is a draft and not
+  used yet.
+- Chennai's current weather, which picks a rain or storm scene, is from
+  [Open-Meteo](https://open-meteo.com) (CC BY 4.0).
 - Tool logos are from [Simple Icons](https://simpleicons.org), [SVGL](https://svgl.app),
   and the brands' own sites. All trademarks belong to their owners.

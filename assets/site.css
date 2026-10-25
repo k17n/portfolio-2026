@@ -1062,6 +1062,11 @@ main { position: relative; }
 .scene-hint svg { width: calc(11px * var(--s)); height: calc(11px * var(--s)); }
 .scene-art:hover .scene-hint, .scene-art:focus-visible .scene-hint { opacity: 1; transform: none; }
 
+/* One scene for the weather: nothing to shuffle to */
+.scene.is-single .scene-art { cursor: default; }
+.scene.is-single .scene-art:active { transform: none; }
+.scene.is-single .scene-hint { display: none; }
+
 .scene figcaption {
   display: flex;
   flex-wrap: wrap;

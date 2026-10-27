@@ -1,0 +1,4 @@
+# Local agent tooling (installed skills, editor/agent settings)
+.agents/
+.claude/
+skills-lock.json

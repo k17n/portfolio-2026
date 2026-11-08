@@ -1,14 +1,16 @@
 # Not part of the site: repo tooling and GitHub Pages leftovers.
-.git
-.github
-.gitignore
-.remember
-.agents
-.claude
-node_modules
-skills-lock.json
-README.md
-CNAME
-.nojekyll
-wrangler.jsonc
-.assetsignore
+# Leading slashes anchor each rule to the repo root, so vendored files such as
+# assets/vendor/ascii-rest/README.md are still served.
+/.git
+/.github
+/.gitignore
+/.remember
+/.agents
+/.claude
+/node_modules
+/skills-lock.json
+/README.md
+/CNAME
+/.nojekyll
+/wrangler.jsonc
+/.assetsignore

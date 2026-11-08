@@ -1,0 +1,9 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Keep *.workers.dev copies out of search results so they never compete with the real domain.
+https://*.workers.dev/*
+  X-Robots-Tag: noindex

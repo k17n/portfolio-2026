@@ -12,6 +12,14 @@ python -m http.server 5173
 
 Then open http://localhost:5173.
 
+## Deploy
+
+Hosted on Cloudflare (Workers static assets), built from this repo by Cloudflare's Git
+integration: a push to `main` deploys to production. `wrangler.jsonc` serves the repo root,
+and `.assetsignore` keeps repo tooling out of what is served. Cloudflare rejects any file over
+25 MiB, so keep large files (reports, video) under that. `_headers` sets security headers and
+keeps `*.workers.dev` copies out of search.
+
 ## Structure
 
 - `index.html` — home
